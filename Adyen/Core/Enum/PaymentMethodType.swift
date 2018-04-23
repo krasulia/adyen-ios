@@ -4,7 +4,7 @@
 // This file is open source and available under the MIT license. See the LICENSE file for more info.
 //
 
-enum PaymentMethodType: String {
+public enum PaymentMethodType: String {
     case applepay
     case ideal
     case cards
