@@ -4,7 +4,7 @@
 // This file is open source and available under the MIT license. See the LICENSE file for more info.
 //
 
-internal extension Array {
+public extension Array {
     func groupBy<G: Hashable>(groupClosure: (Element) -> G) -> [[Element]] {
         var groups = [[Element]]()
         
@@ -38,7 +38,7 @@ internal extension Array {
     }
 }
 
-internal extension Optional where Wrapped: Collection {
+public extension Optional where Wrapped: Collection {
     
     /// Returns a boolean value indicating whether the wrapped collection is either nil or empty.
     internal var isNilOrEmpty: Bool {

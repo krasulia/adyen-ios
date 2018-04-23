@@ -11,7 +11,7 @@ public final class PaymentMethod: Equatable {
     
     // MARK: - Initializing
     
-    internal init(name: String, type: String, isOneClick: Bool, oneClickInfo: OneClickInfo?, logoURL: URL?, inputDetails: [InputDetail]?, members: [PaymentMethod]?, group: Group?, paymentMethodData: String) {
+    public init(name: String, type: String, isOneClick: Bool, oneClickInfo: OneClickInfo?, logoURL: URL?, inputDetails: [InputDetail]?, members: [PaymentMethod]?, group: Group?, paymentMethodData: String) {
         self.name = name
         self.type = type
         self.isOneClick = isOneClick
@@ -24,7 +24,7 @@ public final class PaymentMethod: Equatable {
         self.txVariant = PaymentMethodType(rawValue: type) ?? .other
     }
     
-    internal convenience init?(info: [String: Any], logoBaseURL: String, isOneClick: Bool) {
+    public convenience init?(info: [String: Any], logoBaseURL: String, isOneClick: Bool) {
         guard
             let type = info["type"] as? String,
             let data = info["paymentMethodData"] as? String,
@@ -57,7 +57,7 @@ public final class PaymentMethod: Equatable {
         self.logoBaseURL = logoBaseURL
     }
     
-    internal convenience init?(members: [PaymentMethod]) {
+    public convenience init?(members: [PaymentMethod]) {
         guard members.count > 0 else {
             return nil
         }
@@ -106,15 +106,15 @@ public final class PaymentMethod: Equatable {
     
     // MARK: - Internal
     
-    internal struct Group {
+    public struct Group {
         
-        internal let type: String
+        public let type: String
         
-        internal let name: String
+        public let name: String
         
-        internal let data: String
+        public let data: String
         
-        internal init?(info: [String: Any]) {
+        public init?(info: [String: Any]) {
             guard
                 let type = info["type"] as? String,
                 let name = info["name"] as? String,
@@ -130,24 +130,24 @@ public final class PaymentMethod: Equatable {
         
     }
     
-    internal let group: Group?
+    public let group: Group?
     
-    internal let paymentMethodData: String
+    public let paymentMethodData: String
     
     /// paymentMethodReturnData returned during original initiate call. Fallback on this if no new data is retrieved.
     /// This can happen if user followed a redirect URL, but came back without the return URL.
-    internal var fallbackReturnData: String?
-    internal var txVariant: PaymentMethodType
-    internal var providedAdditionalRequiredFields: [String: Any]?
-    internal var configuration: [String: Any]?
-    internal var fulfilledPaymentDetails: PaymentDetails?
-    internal var supportsPolling = false
+    public var fallbackReturnData: String?
+    public var txVariant: PaymentMethodType
+    public var providedAdditionalRequiredFields: [String: Any]?
+    public var configuration: [String: Any]?
+    public var fulfilledPaymentDetails: PaymentDetails?
+    public var supportsPolling = false
     
-    internal func requiresPaymentDetails() -> Bool {
+    public func requiresPaymentDetails() -> Bool {
         return inputDetails?.isEmpty == false && fulfilledPaymentDetails == nil
     }
     
-    internal var requiresPlugin: Bool {
+    public var requiresPlugin: Bool {
         return MethodRequiresPlugin(rawValue: txVariant.rawValue) != nil
     }
     
