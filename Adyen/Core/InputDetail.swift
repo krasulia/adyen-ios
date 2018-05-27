@@ -112,12 +112,14 @@ public class InputDetail {
         }
     }
     
+    public let key: String
+    public let configuration: [String: Any]?
+    
     // MARK: - Internal
     
-    let key: String
     var value: String?
     
-    public let configuration: [String: Any]?
+    
 }
 
 // MARK: - Helpers
