@@ -83,6 +83,12 @@ public final class PaymentMethod: Equatable {
     /// The payment method type.
     public let type: String
     
+    /// The group type
+    
+    public var groupType: String? {
+        return self.group?.type
+    }
+    
     /// A URL to the logo of the payment method.
     public let logoURL: URL?
     
